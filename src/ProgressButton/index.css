@@ -1,0 +1,124 @@
+.progress-btn {
+	position: relative;
+	width: 150px;
+	height: 50px;
+	display: inline-block;
+	background: #f44336;
+	font-family: "RobotoDraft","Roboto",sans-serif;
+	color: #fff;
+	font-weight: normal;
+	font-size: 20px;
+	transition: all 0.4s ease;
+}
+.progress-btn:not(.active) {
+	cursor: pointer;
+}
+
+.progress-btn .btn {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	line-height: 50px;
+	text-align: center;
+	z-index: 10;
+	opacity: 1;
+}
+
+.progress-btn .progress {
+	width: 0%;
+	z-index: 5;
+	background: #D32F2F;
+	opacity: 0;
+	transition: all 0.3s ease;
+}
+.progress-btn.active .progress {
+	opacity: 1;
+	animation: progress-anim 10s ease 0s;
+}
+
+.progress-btn[data-progress-style='indefinite-circle'].active .progress {
+	animation: dash 2s ease infinite,
+	           rotate 2s linear infinite;
+}
+
+.progress-btn[data-progress-style='indefinite-circle'].active {
+	width: 50px;
+}
+
+
+.progress-btn[data-progress-style='indefinite-circle'] .progress {
+	width: 40px;
+	height: 40px;
+	background: transparent;
+	position: absolute;
+	top: 5px;
+	left: calc(50% - 20px);
+}
+.progress-btn[data-progress-style='indefinite-circle'].active .btn {
+	opacity: 0;
+}
+
+.circle-loader {
+	fill: transparent;
+	stroke: #eee;
+	stroke-width: 5;
+}
+
+
+@keyframes dash {
+	0% {
+		stroke-dasharray: 1,95;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 85,95;
+		stroke-dashoffset: -25;
+	}
+	100% {
+		stroke-dasharray: 85,95;
+		stroke-dashoffset: -93;
+	}
+}
+
+@keyframes rotate {
+	0% {transform: rotate(0deg); }
+	100% {transform: rotate(360deg); }
+}
+
+@keyframes progress-anim {
+	0% {
+		width: 0%;
+	}
+	5% {
+		width: 0%;
+	}
+	10% {
+		width: 15%;
+	}
+	30% {
+		width: 40%;
+	}
+	50% {
+		width: 55%;
+	}
+	80% {
+		width: 100%;
+	}
+	95% {
+		width: 100%;
+	}
+	100% {
+		width: 0%;
+	}
+}
+
+@keyframes progress-indefinite-anim {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 100% 0%;
+	}
+}
